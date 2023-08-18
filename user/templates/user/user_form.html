@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  button {
+        background-color: #4CAF50;
+        width: 25%;
+        color: orange;
+        padding: 15px;
+        margin: 20px 0px;
+        border: none;
+        cursor: pointer;
+         }
+
+</style>
+  <h2>User Form</h2>
+
+  <form method="post" id="userForm" data-branches-url="{% url 'ajax_load_branches' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      
+      {{ form.as_table }}
+    </table>
+    <br>
+    <button type="submit">Save</button>
+<!--    <a href="{% url 'user_changelist' %}">Nevermind</a>-->
+  </form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $("#id_district").change(function () {
+      var url = $("#userForm").attr("data-branches-url");
+      var districtId = $(this).val();
+
+      $.ajax({                      
+        url: url,                    
+        data: {
+          'district': districtId
+        },
+        success: function (data) {  
+          $("#id_branch").html(data);  
+        }
+      });
+
+    });
+  </script>
+
+
+{% endblock %}

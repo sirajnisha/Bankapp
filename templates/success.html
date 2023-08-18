@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+          font-family: Calibri, Helvetica, sans-serif;
+          background-color:Silver;
+        }
+        nav{
+        color:white;
+        text-align:center;
+        background-color:blue;
+        font-size:30px;
+
+        }
+
+       h1{
+       color:seagreen;
+       text-align:center;
+       }
+       h2{
+       color:tomato;
+        text-align:center;
+        }
+        p{
+        color:blue;
+       text-align:center;
+       }
+       button{
+        background-color:green;
+        color:white;
+        height:35px;
+        }
+
+
+
+    </style>
+    <nav >WELCOME TO ABC BANK</nav>
+</head>
+
+
+<body>
+
+<h1>login Success.........</h1>
+{% if user.is_authenticated %}
+<h2>Hello {{user.username}}</h2>
+{% endif %}
+<form action="user/add">
+<p> Please Click below for getting Form <br><br><button type="submit">Click Here</button></p>
+
+</form>
+</body>
+</html>
